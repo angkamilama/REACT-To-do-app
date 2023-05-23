@@ -33,7 +33,7 @@ function App() {
               onChange={(e) => setInputValue(e.target.value)}
             />
           </label>
-          <input type="submit" />
+          <button>ADD</button>
         </form>
         <div className="lists">
           <div className="topics">

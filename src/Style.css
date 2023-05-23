@@ -53,7 +53,7 @@
     padding: 8px;
   }
 
-  .form-container input[type="submit"] {
+  .form-container button {
     padding: 5px;
     margin-top: 10px ;
     background-color: rgb(163, 205, 112);
