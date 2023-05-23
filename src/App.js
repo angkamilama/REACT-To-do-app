@@ -3,34 +3,34 @@ import { useState, useRef } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 function App() {
+  const [inputValue, setInputValue] = useState("");
   const [todoTopic, setTodoTopic] = useState([]);
-
-  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoTopic((todoTopic) => [...todoTopic, inputRef.current.value]);
+    setTodoTopic((todoTopic) => [...todoTopic, inputValue]);
+    setInputValue("");
   };
-  const deleteTopic = (index) => {
+  const RemoveTopic = (index) => {
     const updatedTodoTopic = todoTopic.filter(
       (todo) => todoTopic.indexOf(todo) !== index
     );
     setTodoTopic(updatedTodoTopic);
   };
-  console.log(todoTopic);
+  console.log(inputValue, todoTopic);
 
   return (
     <div className="main-container">
       <h2>To Do APP</h2>
       <div className="container">
-        <form onSubmit={handleSubmit} className="form-container">
+        <form className="form-container" onSubmit={handleSubmit}>
           <label className="input-container">
             <p>Tasks:</p>
             <input
               name="myInput"
-              type="text"
-              ref={inputRef}
+              value={inputValue}
               className="input-box"
+              onChange={(e) => setInputValue(e.target.value)}
             />
           </label>
           <input type="submit" />
@@ -42,8 +42,8 @@ function App() {
                 <div className="topic" key={index}>
                   <div className="topic-heading">{list}</div>
                   <button
-                    className="topic-delete"
-                    onClick={() => deleteTopic(index)}
+                    className="RemoveTopic"
+                    onClick={() => RemoveTopic(index)}
                   >
                     Remove
                   </button>
