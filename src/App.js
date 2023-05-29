@@ -1,23 +1,39 @@
 import style from "./Style.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [todoTopic, setTodoTopic] = useState([]);
+  const [showPop, setShowPop] = useState(false);
+  const [removeId, setRemoveId] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoTopic((todoTopic) => [...todoTopic, inputValue]);
-    setInputValue("");
+    let idNum = uuidv4();
+    if (inputValue === "") {
+      alert("Please enter a task!!!");
+    } else {
+      console.log(inputValue);
+      setTodoTopic((todoTopic) => [
+        ...todoTopic,
+        { name: inputValue, id: idNum },
+      ]);
+      setInputValue("");
+    }
   };
-  const RemoveTopic = (index) => {
-    const updatedTodoTopic = todoTopic.filter(
-      (todo) => todoTopic.indexOf(todo) !== index
-    );
+
+  const RemoveTopic = () => {
+    setShowPop((showPop) => !showPop);
+    const updatedTodoTopic = todoTopic.filter((todo) => todo.id !== removeId);
     setTodoTopic(updatedTodoTopic);
   };
-  console.log(inputValue, todoTopic);
+
+  const showContents = (val) => {
+    setShowPop((showPop) => !showPop);
+    setRemoveId((removeId) => val);
+  };
 
   return (
     <div className="main-container">
@@ -33,25 +49,49 @@ function App() {
               onChange={(e) => setInputValue(e.target.value)}
             />
           </label>
-          <button>ADD</button>
+          <button type="submit">ADD</button>
         </form>
         <div className="lists">
           <div className="topics">
-            {todoTopic.map((list, index) => {
+            {todoTopic.map((list) => {
               return (
-                <div className="topic" key={index}>
-                  <div className="topic-heading">{list}</div>
-                  <button
-                    className="RemoveTopic"
-                    onClick={() => RemoveTopic(index)}
-                  >
-                    Remove
-                  </button>
+                <div className="topic-background">
+                  <div className="topic" key={list.id}>
+                    <div className="topic-heading">{list.name}</div>
+                    <button
+                      className="topic-details"
+                      onClick={() => showContents(list.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+        {showPop && (
+          <div className="modal-background">
+            <div className="modal-container">
+              <div className="modal-title">
+                <p> Are you sure that you want to remove the task ?</p>
+              </div>
+              <div className="modal-btns">
+                <button
+                  className="topic-remove btn-no"
+                  onClick={() => {
+                    showContents();
+                  }}
+                >
+                  No
+                </button>
+                <button className="topic-remove" onClick={() => RemoveTopic()}>
+                  Yes
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
