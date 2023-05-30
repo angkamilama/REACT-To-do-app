@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="main-container">
-      <h2>To Do APP</h2>
+      <h2>To Do App</h2>
       <div className="container">
         <form className="form-container" onSubmit={handleSubmit}>
           <label className="input-container">
