@@ -40,6 +40,10 @@
   padding: 9px;
 }
 
+.form-container button {
+  margin-top: 20px;
+}
+
 .input-container {
   display: flex;
   justify-content: space-between;
