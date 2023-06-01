@@ -1,7 +1,5 @@
 import style from "./Style.css";
 import { useState } from "react";
-import TodoList from "./components/TodoList";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
