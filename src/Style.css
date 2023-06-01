@@ -26,7 +26,7 @@
  flex-direction: column;
  justify-content: space-between;
  align-items: center;
- padding: 8px;
+ padding: 5px;
  width: 90vw;
 }
 
@@ -35,7 +35,7 @@
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 9px;
 }
@@ -53,8 +53,11 @@
 }
 .input-box {
   width: 80%;
-  height: 30px;
-  padding: 8px;
+  height: 35px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 .form-container button {
