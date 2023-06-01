@@ -36,12 +36,14 @@ function App() {
     setShowPop((showPop) => !showPop);
     const updatedTodoTopic = todoTopic.filter((todo) => todo.id !== removeId);
     setTodoTopic(updatedTodoTopic);
+    setEditId(0);
   };
 
   const showContents = (id) => {
     setShowPop((showPop) => !showPop);
     setRemoveId((removeId) => id);
     setInputValue("");
+    setEditId(0);
   };
 
   const handleEdit = (id) => {
