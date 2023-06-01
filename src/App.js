@@ -1,5 +1,5 @@
 import style from "./Style.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   const [showPop, setShowPop] = useState(false);
   const [removeId, setRemoveId] = useState("");
   const [editId, setEditId] = useState(0);
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ function App() {
             <p>Tasks:</p>
             <input
               name="myInput"
+              ref={inputRef}
               value={inputValue}
               className="input-box"
               onChange={(e) => setInputValue(e.target.value)}
@@ -72,7 +74,10 @@ function App() {
                 <div className="topic-heading">{todo.name}</div>
                 <button
                   className="topic-edit"
-                  onClick={() => handleEdit(todo.id)}
+                  onClick={() => {
+                    inputRef.current.focus();
+                    handleEdit(todo.id);
+                  }}
                 >
                   Edit
                 </button>
