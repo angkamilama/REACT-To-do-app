@@ -76,31 +76,26 @@
 
  .topics {
  padding: 8px;
- width: 100%;
- }
- 
- .topic-background {
-  width: 90%;
-  margin: 0 auto;
+ width: 90%;
+ margin: 0 auto;
  }
 
 .topic {
- border: 1px dotted rgb(96, 93, 93);
- border-radius: 8px;
- margin-bottom: 15px;
- width: 100%;
- padding: 8px;
- display: flex;
- justify-content: space-evenly;
- align-items: center;
- align-items: center;
+  border: 1px dotted rgb(96, 93, 93);
+  border-radius: 8px;
+  margin: 15px auto;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .topic-heading {
  max-width: 130px;
  overflow-wrap: break-word;
  margin-left: 10px;
- font-weight: 600;
+ font-weight: 300;
 }
 
 
@@ -115,15 +110,19 @@
   border-radius: 5px;
 }
 
-.topic-details { 
-  background-color: rgb(173, 149, 209);
+.topic-edit { 
+  background-color: rgb(198, 164, 100);
+  height: 30px;
+  width: 60px;
+  padding: 2px; 
+  font-weight: 600;
+  margin-left:  10px;
+  border-radius: 5px;
 }
 
 .topic-remove {
-  background-color: rgb(114, 192, 159);
+  background-color:  rgb(173, 149, 209);;
 }
-
-
 
 .modal-background{
   position: fixed;
@@ -175,7 +174,7 @@
 @media (min-width: 600px) {
     .topics {
     padding: 8px;
-    width: 90vw;
+    max-width: 700px;
     margin: 0 auto;
     }
     
@@ -187,8 +186,7 @@
     .topic-heading {
     max-width: 400px;
     overflow-wrap: break-word;
-    margin-left: 10px;
-    font-weight: 600;
+    font-weight: 500;
     }
 }
 
