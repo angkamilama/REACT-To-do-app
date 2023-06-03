@@ -1,14 +1,14 @@
 import style from "./Style.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [editedInputValue, setEditedInputValue] = useState("");
   const [todoTopic, setTodoTopic] = useState([]);
   const [showPop, setShowPop] = useState(false);
   const [removeId, setRemoveId] = useState("");
   const [editId, setEditId] = useState(0);
-  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,20 +16,13 @@ function App() {
 
     if (inputValue === "") {
       alert("Please enter a task!!!");
-    } else if (editId) {
-      const editedTodoTopic = todoTopic.map((todo) =>
-        todo.id === editId ? { ...todo, name: inputValue } : todo
-      );
-      setTodoTopic(editedTodoTopic);
-      setEditId(0);
-      setInputValue("");
     } else {
       setTodoTopic((todoTopic) => [
         ...todoTopic,
         { name: inputValue, id: idNum },
       ]);
-      setInputValue("");
     }
+    setInputValue("");
   };
 
   const RemoveTopic = () => {
@@ -46,9 +39,21 @@ function App() {
     setEditId(0);
   };
 
+  const editTodoTopic = (e) => {
+    e.preventDefault();
+    if (editedInputValue === "") {
+      alert("please add a new input topic");
+    } else {
+      const editedTodoTopic = todoTopic.map((todo) =>
+        todo.id === editId ? { ...todo, name: editedInputValue } : todo
+      );
+      setTodoTopic(editedTodoTopic);
+      setEditId(0);
+      setEditedInputValue("");
+    }
+  };
+
   const handleEdit = (id) => {
-    const editedTodo = todoTopic.find((todo) => todo.id === id);
-    setInputValue((inputValue) => editedTodo.name);
     setEditId((editId) => id);
   };
 
@@ -61,36 +66,59 @@ function App() {
             <p>Tasks:</p>
             <input
               name="myInput"
-              ref={inputRef}
               value={inputValue}
               className="input-box"
               onChange={(e) => setInputValue(e.target.value)}
             />
           </label>
-          <button type="submit">{editId ? "EDIT" : "ADD"}</button>
+          <button type="submit">ADD</button>
         </form>
         <div className="lists">
           <div className="topics">
-            {todoTopic.map((todo) => (
-              <div className="topic" key={todo.id}>
-                <div className="topic-heading">{todo.name}</div>
-                <button
-                  className="topic-edit"
-                  onClick={() => {
-                    inputRef.current.focus();
-                    handleEdit(todo.id);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="topic-remove"
-                  onClick={() => showContents(todo.id)}
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
+            {todoTopic.map((todo) =>
+              todo.id === editId ? (
+                <div className="edit-topic" key={todo.id}>
+                  <form className="edit-form" onSubmit={editTodoTopic}>
+                    <label>
+                      <input
+                        type="text"
+                        name="editedTopic"
+                        className="input-box"
+                        defaultValue={todo.name}
+                        onChange={(e) => setEditedInputValue(e.target.value)}
+                      />
+                    </label>
+                    <button type="submit" className="edit-topic-update">
+                      Update
+                    </button>
+                  </form>
+                  <button
+                    className="edit-topic-cancel"
+                    onClick={() => setEditId(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <div className="topic" key={todo.id}>
+                  <div className="topic-heading">{todo.name}</div>
+                  <button
+                    className="topic-edit"
+                    onClick={() => {
+                      handleEdit(todo.id);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="topic-remove"
+                    onClick={() => showContents(todo.id)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              )
+            )}
           </div>
         </div>
         {showPop && (

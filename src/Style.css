@@ -17,7 +17,8 @@
 }
 
 .main-container h2 {
- margin: 30px auto;
+ margin: 20px auto;
+ font-size: 30px;
 }
 
 .container {
@@ -58,13 +59,11 @@
   font-size: 18px;
   border-radius: 5px;
   border: 1px solid black;
+  margin-left: 20px;
 }
 
 .form-container button {
-  padding: 5px;
-  margin-top: 10px ;
   background-color: rgb(123, 201, 143);
-  border-radius: 5px;
 }
 
 .lists {
@@ -88,54 +87,25 @@
   border-radius: 8px;
   margin: 15px auto;
   width: 100%;
-  padding: 8px;
+  padding: 12px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .topic-heading {
- max-width: 130px;
+ width: 150px;
  overflow-wrap: break-word;
  margin-left: 10px;
  font-weight: 300;
 }
 
-
-.topic-details,
-.topic-remove {
-  height: 30px;
-  width: 60px;
-  padding: 2px; 
-  font-weight: 600;
-  margin-left:  10px;
-  border: 1px solid rgb(99, 99, 99);
-  border-radius: 5px;
-}
-
 .topic-edit { 
-  background-color: rgb(236, 210, 161);
-  height: 30px;
-  width: 60px;
-  padding: 2px; 
-  font-weight: 600;
-  margin-left:  10px;
-  border-radius: 5px;
+  background-color: rgb(226, 205, 166);
 }
 
 .topic-remove {
   background-color:  rgb(216, 196, 246);
-}
-
-.topic-show {
-  background-color:  rgb(128, 190, 130);
-  height: 30px;
-  width: 60px;
-  padding: 2px; 
-  font-weight: 600;
-  margin-left:  10px;
-  border: 1px solid rgb(99, 99, 99);
-  border-radius: 5px;
 }
 
 .modal-background{
@@ -174,8 +144,6 @@
   width: 100%;
 
 }
-
-
 .modal-btns {
   width: 80%;
   display: flex;
@@ -184,7 +152,50 @@
 
 .btn-no {
   background-color: rgb(222, 141, 141);
+  border: none;
 } 
+
+.edit-topic {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px dotted rgb(96, 93, 93);
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+}
+.edit-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.topic-edit,
+.topic-remove,
+.edit-topic-cancel,
+.edit-topic-update,
+.form-container button  {
+  height: 30px;
+  width: 70px;
+  padding: 2px; 
+  font-weight: 550;
+  margin-left:  10px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(34, 33, 33);
+}
+
+.input-box {
+  min-width: 100px;
+}
+.edit-topic-update { 
+    background-color: rgb(141, 177, 220);
+    padding: 8px;
+}
+.edit-topic-cancel {
+  background-color: rgb(191, 113, 113);
+}
 
                           /* for Tablet  and laptop screen */
 
@@ -192,19 +203,19 @@
 @media (min-width: 600px) {
     .topics {
     padding: 8px;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     }
-    
-    .topic-background {
-      width: 70vw;
-      margin: 0 auto;
-    }
 
-    .topic-heading {
-    max-width: 400px;
+    .topic-heading{
+    width: 450px;
     overflow-wrap: break-word;
     font-weight: 500;
+    }
+
+    .input-box {
+      width: 400px;
+      text-align: center;
     }
 }
 
