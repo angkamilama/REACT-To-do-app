@@ -187,7 +187,7 @@ body {
 .form-container button  {
   height: 34px;
   width: 70px;
-  padding: 2px; 
+  padding: 4px; 
   font-weight: bold;
   margin-left:  10px;
   border: none;
@@ -217,7 +217,7 @@ body {
 .form-container button:hover {
   border: 3px solid #D8C4B6;
   border-radius: 6px;
-  padding: 7px;
+  padding: 4px;
   background-color: #4F709C;
   transform: scale(1.07);
   transition: transform 0.3s ease-in-out;
