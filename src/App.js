@@ -63,7 +63,7 @@ function App() {
       <div className="container">
         <form className="form-container" onSubmit={handleSubmit}>
           <label className="input-container">
-            <p>Tasks:</p>
+            <p>TASKS</p>
             <input
               name="myInput"
               value={inputValue}

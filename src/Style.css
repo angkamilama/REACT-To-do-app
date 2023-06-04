@@ -3,17 +3,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
+body {
+  background-color: rgb(131, 169, 203);
+}
 .main-container {
-  height: 100vh;
-  width: 100vw;
+  height: 80vh;
+  width: 90vw;
   margin: 100px auto;
   padding: 10px;
   display: flex;
   flex-direction: column ;
   justify-content: flex-start;
   align-items: center;
+  
+  border-radius: 15px;
 }
 
 .main-container h2 {
@@ -28,11 +34,11 @@
  justify-content: space-between;
  align-items: center;
  padding: 5px;
- width: 90vw;
+ width: 80vw;
 }
 
 .form-container {
-  width: 300px;
+  width: 400px;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -56,14 +62,14 @@
   width: 80%;
   height: 35px;
   padding: 10px;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 5px;
   border: 1px solid black;
   margin-left: 20px;
 }
 
 .form-container button {
-  background-color: rgb(123, 201, 143);
+  background-color:  rgb(155, 216, 170);
 }
 
 .lists {
@@ -83,8 +89,7 @@
  }
 
 .topic {
-  border: 1px dotted rgb(96, 93, 93);
-  border-radius: 8px;
+  border-radius: 30px;
   margin: 15px auto;
   width: 100%;
   padding: 12px;
@@ -94,10 +99,16 @@
 }
 
 .topic-heading {
- width: 150px;
- overflow-wrap: break-word;
- margin-left: 10px;
- font-weight: 300;
+  border-radius: 6px;
+  padding: 7px;
+  background-color: #4F709C;
+  color: rgb(255, 255, 255);
+  width: 150px;
+  overflow-wrap: break-word;
+  margin-left: 10px;
+  font-weight: 300;
+  font-size: 18px;
+  margin-left: 20px;
 }
 
 .topic-edit { 
@@ -149,7 +160,6 @@
   display: flex;
   justify-content: space-evenly;
 }
-
 .btn-no {
   background-color: rgb(222, 141, 141);
   border: none;
@@ -159,7 +169,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px dotted rgb(96, 93, 93);
   border-radius: 8px;
   padding: 8px;
   width: 100%;
@@ -176,26 +185,52 @@
 .edit-topic-cancel,
 .edit-topic-update,
 .form-container button  {
-  height: 30px;
+  height: 34px;
   width: 70px;
   padding: 2px; 
-  font-weight: 550;
+  font-weight: bold;
   margin-left:  10px;
   border: none;
   border-radius: 5px;
   color: rgb(34, 33, 33);
+  border: 1px solid black;
+}
+
+.edit-topic-update { 
+  background-color: rgb(123, 201, 143);
+  padding: 2px;
 }
 
 .input-box {
   min-width: 100px;
 }
-.edit-topic-update { 
-    background-color: rgb(141, 177, 220);
-    padding: 8px;
-}
+
 .edit-topic-cancel {
   background-color: rgb(191, 113, 113);
 }
+
+
+.topic-edit:hover,
+.topic-remove:hover,
+.edit-topic-cancel:hover,
+.edit-topic-update:hover,
+.form-container button:hover {
+  border: 3px solid #D8C4B6;
+  border-radius: 6px;
+  padding: 7px;
+  background-color: #4F709C;
+  transform: scale(1.07);
+  transition: transform 0.3s ease-in-out;
+  color: rgb(255, 255, 255);
+}
+
+.form-container button:hover,
+.edit-topic-update:hover{
+  background-color: rgb(70, 157, 92);
+  border: 1px solid rgb(247, 243, 243);
+ 
+}
+
 
                           /* for Tablet  and laptop screen */
 
