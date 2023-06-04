@@ -227,7 +227,7 @@ body {
 .edit-topic-update:hover,
 .form-container button:hover {
   padding: 4px;
-  background-color: rgb(221, 232, 240);
+  background-color: rgb(221, 232, 239);
   color: #668ec3;
   border-radius: 15px;
   transform: scale(1.03);
