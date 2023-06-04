@@ -63,10 +63,11 @@ body {
   height: 35px;
   padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid black;
+  border-radius: 13px;
   margin-left: 20px;
+  border: none;
 }
+
 
 .form-container button {
   background-color:  rgb(155, 216, 170);
@@ -98,16 +99,17 @@ body {
 }
 
 .topic-heading {
-  border-radius: 6px;
+  border: 1px solid rgb(189, 202, 237);
+  border-radius: 20px;
   padding: 7px;
-  background-color: #4F709C;
-  color: rgb(255, 255, 255);
+  color: #f7f7f9;
   width: 150px;
   overflow-wrap: break-word;
   margin-left: 10px;
   font-weight: 300;
   font-size: 18px;
   margin-left: 20px;
+  box-shadow: 0 0 8px whitesmoke;
 }
 
 .topic-edit { 
@@ -159,9 +161,10 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-.btn-no {
-  background-color: rgb(222, 141, 141);
-  border: none;
+
+.btn-no:hover,
+.btn-yes:hover {
+  border: 1px solid #668ec3;
 } 
 
 .edit-topic {
@@ -193,13 +196,18 @@ body {
   font-weight: bold;
   margin-left:  10px;
   border: none;
-  border-radius: 5px;
-  color: rgb(34, 33, 33);
-  border: 1px solid black;
+  border-radius: 15px;
+  color: white;
+  background-color: #668ec3;
+  box-shadow: 0 0 20px whitesmoke;
+}
+.form-container button {
+  background-color:   rgb(52, 126, 71);
 }
 
 .edit-topic-update { 
-  background-color: rgb(123, 201, 143);
+  color: aliceblue;
+  background-color: #668ec3;
   padding: 2px;
 }
 
@@ -208,7 +216,8 @@ body {
 }
 
 .edit-topic-cancel {
-  background-color: rgb(191, 113, 113);
+  color: aliceblue;
+  background-color: #668ec3;
 }
 
 
@@ -217,20 +226,21 @@ body {
 .edit-topic-cancel:hover,
 .edit-topic-update:hover,
 .form-container button:hover {
-  border: 3px solid #D8C4B6;
-  border-radius: 6px;
   padding: 4px;
-  background-color: #4F709C;
-  transform: scale(1.07);
+  background-color: rgb(221, 232, 240);
+  color: #668ec3;
+  border-radius: 15px;
+  transform: scale(1.03);
   transition: transform 0.3s ease-in-out;
-  color: rgb(255, 255, 255);
+}
+.edit-topic-update:hover{
+  background-color: rgb(52, 126, 71);
+  color: whitesmoke;
 }
 
-.form-container button:hover,
-.edit-topic-update:hover{
-  background-color: rgb(70, 157, 92);
-  border: 1px solid rgb(247, 243, 243);
- 
+.edit-topic-cancel:hover {
+  color: aliceblue;
+  background-color: #c05039;
 }
 
 

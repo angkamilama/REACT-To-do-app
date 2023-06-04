@@ -136,7 +136,10 @@ function App() {
                 >
                   No
                 </button>
-                <button className="topic-remove" onClick={() => RemoveTopic()}>
+                <button
+                  className="topic-remove btn-yes"
+                  onClick={() => RemoveTopic()}
+                >
                   Yes
                 </button>
               </div>
