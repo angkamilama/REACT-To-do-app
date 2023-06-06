@@ -200,9 +200,11 @@ body {
   color: white;
   background-color: #668ec3;
   box-shadow: 0 0 20px whitesmoke;
+  cursor: pointer;
 }
 .form-container button {
   background-color:   rgb(52, 126, 71);
+  
 }
 
 .edit-topic-update { 
