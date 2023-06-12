@@ -5,30 +5,28 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [editedInputValue, setEditedInputValue] = useState("");
-  const [todoTopic, setTodoTopic] = useState([]);
+  const [Todos, setTodos] = useState([]);
   const [showPop, setShowPop] = useState(false);
   const [removeId, setRemoveId] = useState("");
   const [editId, setEditId] = useState(0);
+  const [InputError, setInputError] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let idNum = uuidv4();
 
     if (inputValue === "") {
-      alert("Please enter a task!!!");
+      setInputError(false);
     } else {
-      setTodoTopic((todoTopic) => [
-        ...todoTopic,
-        { name: inputValue, id: idNum },
-      ]);
+      setTodos((Todo) => [...Todo, { name: inputValue, id: idNum }]);
     }
     setInputValue("");
   };
 
-  const RemoveTopic = () => {
+  const RemoveTodo = () => {
     setShowPop((showPop) => !showPop);
-    const updatedTodoTopic = todoTopic.filter((todo) => todo.id !== removeId);
-    setTodoTopic(updatedTodoTopic);
+    const updatedTodos = Todos.filter((todo) => todo.id !== removeId);
+    setTodos(updatedTodos);
     setEditId(0);
   };
 
@@ -39,15 +37,15 @@ function App() {
     setEditId(0);
   };
 
-  const editTodoTopic = (e) => {
+  const editTodos = (e) => {
     e.preventDefault();
     if (editedInputValue === "") {
-      alert("please add a new input topic");
+      alert("please edit the topic");
     } else {
-      const editedTodoTopic = todoTopic.map((todo) =>
+      const editedTodos = Todos.map((todo) =>
         todo.id === editId ? { ...todo, name: editedInputValue } : todo
       );
-      setTodoTopic(editedTodoTopic);
+      setTodos(editedTodos);
       setEditId(0);
       setEditedInputValue("");
     }
@@ -62,48 +60,58 @@ function App() {
       <h2>To Do App</h2>
       <div className="container">
         <form className="form-container" onSubmit={handleSubmit}>
-          <label className="input-container">
-            <p>TASKS</p>
-            <input
-              name="myInput"
-              value={inputValue}
-              className="input-box"
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-          </label>
-          <button type="submit">ADD</button>
+          <div>
+            <label className="input-container">
+              {InputError ? (
+                <input
+                  name="myInput"
+                  value={inputValue}
+                  className="input-box"
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+              ) : (
+                <input
+                  name="myInput"
+                  className="input-box-error"
+                  placeholder="please enter a task"
+                  onClick={() => setInputError(true)}
+                />
+              )}
+              <button type="submit">ADD</button>
+            </label>
+          </div>
         </form>
         <div className="lists">
-          <div className="topics">
-            {todoTopic.map((todo) =>
+          <div className="todos">
+            {Todos.map((todo) =>
               todo.id === editId ? (
-                <div className="edit-topic" key={todo.id}>
-                  <form className="edit-form" onSubmit={editTodoTopic}>
+                <div className="edit-todo" key={todo.id}>
+                  <form className="edit-form" onSubmit={editTodos}>
                     <label>
                       <input
                         type="text"
-                        name="editedTopic"
+                        name="editedTodo"
                         className="input-box"
                         defaultValue={todo.name}
                         onChange={(e) => setEditedInputValue(e.target.value)}
                       />
                     </label>
-                    <button type="submit" className="edit-topic-update">
+                    <button type="submit" className="edit-todo-update">
                       Update
                     </button>
                   </form>
                   <button
-                    className="edit-topic-cancel"
+                    className="edit-todo-cancel"
                     onClick={() => setEditId(false)}
                   >
                     Cancel
                   </button>
                 </div>
               ) : (
-                <div className="topic" key={todo.id}>
-                  <div className="topic-heading">{todo.name}</div>
+                <div className="todo" key={todo.id}>
+                  <div className="todo-heading">{todo.name}</div>
                   <button
-                    className="topic-edit"
+                    className="todo-edit"
                     onClick={() => {
                       handleEdit(todo.id);
                     }}
@@ -111,7 +119,7 @@ function App() {
                     Edit
                   </button>
                   <button
-                    className="topic-remove"
+                    className="todo-remove"
                     onClick={() => showContents(todo.id)}
                   >
                     Remove
@@ -125,22 +133,22 @@ function App() {
           <div className="modal-background">
             <div className="modal-container">
               <div className="modal-title">
-                <p> Are you sure that you want to remove the task ?</p>
+                <p> Are you sure to remove the task ?</p>
               </div>
               <div className="modal-btns">
                 <button
-                  className="topic-remove btn-no"
+                  className="todo-remove btn-yes"
+                  onClick={() => RemoveTodo()}
+                >
+                  Yes
+                </button>
+                <button
+                  className="todo-remove btn-no"
                   onClick={() => {
                     showContents();
                   }}
                 >
                   No
-                </button>
-                <button
-                  className="topic-remove btn-yes"
-                  onClick={() => RemoveTopic()}
-                >
-                  Yes
                 </button>
               </div>
             </div>
